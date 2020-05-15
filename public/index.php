@@ -6,10 +6,7 @@ $url = ltrim($_SERVER['REQUEST_URI'], '/');
 
 $router = new \Core\Router();
 use App\Models\User;
-if (
-  !isset($_SESSION['email']) ||
-  !isset($_SESSION['password']) ||
-  !isset($_SESSION['username'])
+if (!isset($_SESSION['user_is_authenticated'])
 ) {
   $router->dispatch('users/login');
 }
