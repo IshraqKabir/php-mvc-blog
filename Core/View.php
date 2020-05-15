@@ -8,6 +8,7 @@ class View {
       if ($loader == null) {
         $loader = new \Twig\Loader\FilesystemLoader('..' . DS . 'App' . DS . 'Views' . DS);
         $twig = new \Twig\Environment($loader, []);
+        $twig->addGlobal('session', $_SESSION);
       }
       echo $twig->render($templatePath, $args);
   }
