@@ -3,14 +3,16 @@ namespace App\Controllers;
 
 use Core\View;
 use App\Models\Post;
+use App\Models\User;
 
 class Posts {
   public $name = 'posts';
 
   public function allPosts() {
     $allPosts = Post::getAllPosts();
+    $user = User::getUserByID($_SESSION['user_id']);
     $args = array(
-      "name" => "ishraq",
+      "username" => $user['username'],
       "allPosts" => $allPosts
     );
     View::renderTemplate('Posts/allPosts.html', $args);

@@ -5,6 +5,9 @@
 {% for post in allPosts %}
    <li class="collection-item avatar">
      <i class="material-icons circle red">play_arrow</i>
+     {% if post.user_id != 0 %}
+     <span style="color:grey;font-size:small;"><b>Author {{username}}</b></span><br>
+      {% endif %}
      <span class="title"><b>{{post.title}}</b></span>
      <p>{{post.content}}</p>
      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>

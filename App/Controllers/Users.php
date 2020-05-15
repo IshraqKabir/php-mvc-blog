@@ -95,7 +95,6 @@ class Users {
         $args['password2_error'] = 'Passwords dont match';
       }
       else {
-        echo 'register user';
         User::registerUser(
           $_POST['first_name'],
           $_POST['last_name'],
@@ -131,7 +130,7 @@ class Users {
         // $args['login_error'] = 'Username or password does not match';
       }
       else if ($_POST['email'] != '' && User::checkEmail($_POST['email'])) {
-        $args['email_error'] = 'Email already exists';
+        $args['email_error'] = 'This email does not have an account';
       }
       else {
         if(!User::loginUser($email, $password)) {
@@ -143,5 +142,13 @@ class Users {
       }
     }
     View::renderTemplate('Users/login.html', $args);
+  }
+
+  public function logout() {
+    $_SESSION['username'] = '';
+    $_SESSION['email'] = '';
+    $_SESSION['password'] = '';
+    $_SESSION['user_is_authenticated'] = false;
+    header("LOCATION: http://localhost/users/login");
   }
 }

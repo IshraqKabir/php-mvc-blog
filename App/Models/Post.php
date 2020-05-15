@@ -7,7 +7,7 @@ class Post extends \Core\Model {
   public static function getAllPosts() {
     try {
       $db = static::getDB();
-      $query = 'SELECT id, title, content FROM posts ORDER BY -created_at';
+      $query = 'SELECT id, title, content, user_id FROM posts ORDER BY -created_at';
       $statement = $db->query($query);
       $results = $statement->fetchAll(PDO::FETCH_ASSOC);
       return $results;
@@ -20,9 +20,9 @@ class Post extends \Core\Model {
   public static function addPost($title, $content) {
     try {
       $db = static::getDB();
-      $query = 'INSERT INTO posts(title, content) VALUES(:title, :content)';
+      $query = 'INSERT INTO posts(title, content, user_id) VALUES(:title, :content, :user_id)';
       $statement = $db->prepare($query);
-      $statement->execute(['title' => $title, 'content' => $content]);
+      $statement->execute(['title' => $title, 'content' => $content, 'user_id' => $_SESSION['user_id']]);
     }
     catch (PDOException $e) {
       echo $e->getMessage();
