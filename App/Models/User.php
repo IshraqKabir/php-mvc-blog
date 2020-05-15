@@ -89,6 +89,7 @@ class User extends \Core\Model {
           $_SESSION['email'] = $user['email'];
           $_SESSION['username'] = $user['username'];
           $_SESSION['password'] = $password;
+          $_SESSION['user_is_authenticated'] = true;
           return true;
         }
         else {
