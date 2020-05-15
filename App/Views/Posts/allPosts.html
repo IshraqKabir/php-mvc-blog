@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}All Posts {% endblock %}
+{% block content %}
+<ul class="collection">
+{% for post in allPosts %}
+   <li class="collection-item avatar">
+     <i class="material-icons circle red">play_arrow</i>
+     <span class="title"><b>{{post.title}}</b></span>
+     <p>{{post.content}}</p>
+     <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+   </li>
+{% endfor %}
+</ul>
+{% endblock %}
