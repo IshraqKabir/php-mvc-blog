@@ -4,11 +4,13 @@ require '..\Core\bootstrap.php';
 
 $url = ltrim($_SERVER['REQUEST_URI'], '/');
 
-
 $router = new \Core\Router();
-
 use App\Models\User;
-if (!isset($_SESSION['username']) && !isset($_SESSION['email']) && !isset($_SESSION['password'])) {
+if (
+  !isset($_SESSION['email']) ||
+  !isset($_SESSION['password']) ||
+  !isset($_SESSION['username'])
+) {
   $router->dispatch('users/login');
 }
 // find out if this else if is redundant
