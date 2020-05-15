@@ -8,13 +8,14 @@
       <ul class="right hide-on-med-and-down" style="margin-right:10px;">
         <li><a href="http://localhost/posts/allPosts">Posts</a></li>
         <li><a href="http://localhost/posts/addPost">Add <Posts></Posts></a></li>
+        {% if session.user_is_authenticated == false %}
           <li>
             <a href="http://localhost/users/login" class="indigo lighten-2"><button class="btn waves-effect waves-light">Login</button></a>
           </li>
           <li>
             <a href="http://localhost/users/register" class="indigo lighten-2"><button class="btn waves-effect waves-light">Register</button></a>
           </li>
-
+        {% endif %}
       </ul>
     </div>
   </nav>
@@ -22,6 +23,8 @@
   <ul class="sidenav" id="mobile-demo">
     <li><a href="#">Posts</a></li>
     <li><a href="#">Add Posts</a></li>
+    {% if session.user_is_authenticated == false %}
     <li><a href="http://localhost/users/login">Login</a></li>
     <li><a href="http://localhost/users/register">Register</a></li>
+    {% endif %}
   </ul>

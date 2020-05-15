@@ -137,6 +137,9 @@ class Users {
         if(!User::loginUser($email, $password)) {
           $args['login_error'] = 'Username of password was incorrect';
         }
+        else {
+          header("LOCATION: http://localhost/posts/allPosts");
+        }
       }
     }
     View::renderTemplate('Users/login.html', $args);
