@@ -1,9 +1,11 @@
 <?php
 
 namespace Core;
+use App\Models\User;
 
 class Router {
   public function dispatch($url) {
+    
     if ($url != '') {
       $params = explode('/', $url);
       $controller = "\App\Controllers\\" . ucfirst($params[0]);
@@ -21,7 +23,9 @@ class Router {
       }
     }
     else {
-      echo 'home';
+      header("LOCATION: http://localhost/posts/allPosts");
     }
+
+
   }
 }

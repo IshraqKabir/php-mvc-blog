@@ -134,11 +134,8 @@ class Users {
         $args['email_error'] = 'Email already exists';
       }
       else {
-        if(User::loginUser($email, $password)) {
-          echo 'success';
-        }
-        else {
-          echo 'failure';
+        if(!User::loginUser($email, $password)) {
+          $args['login_error'] = 'Username of password was incorrect';
         }
       }
     }

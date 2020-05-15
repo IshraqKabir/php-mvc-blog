@@ -86,6 +86,9 @@ class User extends \Core\Model {
         return false;
       } else {
         if (password_verify($password, $hash)) {
+          $_SESSION['email'] = $user['email'];
+          $_SESSION['username'] = $user['username'];
+          $_SESSION['password'] = $user['password'];
           return true;
         }
         else {
