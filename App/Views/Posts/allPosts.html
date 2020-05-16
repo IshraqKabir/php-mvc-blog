@@ -5,6 +5,7 @@
 {% for post in allPosts %}
    <li class="collection-item avatar">
      <i class="material-icons circle red">play_arrow</i>
+     <span class="title" style="color:grey;font-size:medium;"><b>Author {{post.user_username}}</b></span><br>
      <span class="title"><b>{{post.title}}</b></span>
      <p>{{post.content}}</p>
      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>

@@ -3,7 +3,6 @@ session_start();
 require '..\Core\bootstrap.php';
 
 $url = ltrim($_SERVER['REQUEST_URI'], '/');
-
 $router = new \Core\Router();
 use App\Models\User;
 if ($url == 'users/register') {

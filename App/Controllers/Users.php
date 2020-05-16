@@ -144,4 +144,13 @@ class Users {
     }
     View::renderTemplate('Users/login.html', $args);
   }
+
+  public function logout() {
+    $_SESSION['email'] = '';
+    $_SESSION['username'] = '';
+    $_SESSION['password'] = '';
+    unset($_SESSION['user_is_authenticated']);
+    header("LOCATION: http://localhost/users/login");
+    return;
+  }
 }
