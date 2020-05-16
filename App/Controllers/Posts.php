@@ -12,7 +12,6 @@ class Posts {
     $allPosts = Post::getAllPosts();
     $user = User::getUserByID($_SESSION['user_id']);
     $args = array(
-      "username" => $user['username'],
       "allPosts" => $allPosts
     );
     View::renderTemplate('Posts/allPosts.html', $args);

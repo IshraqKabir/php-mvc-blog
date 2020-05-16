@@ -65,7 +65,7 @@ class Users {
           $args['username_error'] = 'Invalid username. No uppercase letters and has to start with a letter. Underscore is allowed. Must contain atleast three characters';
         }
         if ($_POST['username']!= '' && !User::checkUserName($_POST['username'])) {
-          $args['username_error'] = 'Username already exists';
+            $args['username_error'] = 'Username already exists';
         }
         if ($_POST['email'] != '') {
           if (!User::checkEmail($_POST['email'])) {

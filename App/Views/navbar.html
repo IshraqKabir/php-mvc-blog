@@ -6,9 +6,9 @@
         </div>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down" style="margin-right:10px;">
-        <li><a href="http://localhost/posts/allPosts">Posts</a></li>
-        <li><a href="http://localhost/posts/addPost">Add <Posts></Posts></a></li>
         {% if session.user_is_authenticated %}
+          <li><a href="http://localhost/posts/allPosts">Posts</a></li>
+          <li><a href="http://localhost/posts/addPost">Add <Posts></Posts></a></li>
           <!-- Dropdown Trigger -->
           <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>{{session.username}}</a>
 
@@ -35,9 +35,10 @@
   </nav>
 
   <ul class="sidenav" id="mobile-demo">
+    {% if session.user_is_authenticated %}
     <li><a href="#">Posts</a></li>
     <li><a href="#">Add Posts</a></li>
-    {% if session.user_is_authenticated == false %}
+    {% else %}
     <li><a href="http://localhost/users/login">Login</a></li>
     <li><a href="http://localhost/users/register">Register</a></li>
     {% endif %}

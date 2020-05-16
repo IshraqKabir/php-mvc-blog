@@ -7,7 +7,7 @@ class Post extends \Core\Model {
   public static function getAllPosts() {
     try {
       $db = static::getDB();
-      $query = 'SELECT id, title, content, user_id FROM posts ORDER BY -created_at';
+      $query = 'SELECT id, title, content, user_id, user_username FROM posts ORDER BY -created_at';
       $statement = $db->query($query);
       $results = $statement->fetchAll(PDO::FETCH_ASSOC);
       return $results;
