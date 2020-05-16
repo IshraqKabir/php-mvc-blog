@@ -43,6 +43,11 @@ class Posts {
   }
 
   public function deletePost($post_id) {
+    $post = Post::getSinglePost($post_id);
+    if ($post['user_id'] != $_SESSION['user_id']) {
+      header("Refresh:0; url=http://localhost/users/logout");
+      return;
+    }
     Post::deletePost($post_id);
     header("Refresh:0; url=http://localhost/posts/allPosts");
   }
