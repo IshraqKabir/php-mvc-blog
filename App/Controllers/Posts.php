@@ -41,4 +41,13 @@ class Posts {
   public function singlePost($id) {
     echo "showing post $id";
   }
+
+  public function deletePost($post_id) {
+    Post::deletePost($post_id);
+    header("Refresh:0; url=http://localhost/posts/allPosts");
+  }
+
+  public function editPost($post_id) {
+
+  }
 }

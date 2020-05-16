@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}All Posts {% endblock %}
 {% block content %}
+<div style="margin:auto;width:70%;">
 <ul class="collection">
 {% for post in allPosts %}
    <li class="collection-item avatar">
@@ -8,8 +9,32 @@
      <span class="title" style="color:grey;font-size:medium;"><b>Author {{post.user_username}}</b></span><br>
      <span class="title"><b>{{post.title}}</b></span>
      <p>{{post.content}}</p>
-     <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+     {% if post.user_id == session.user_id %}
+     <a href="#" class="secondary-content" style="margin-right:30px;"><i class="material-icons">edit</i></a>
+     <a class="secondary-content modal-trigger red-text" href="#modal1"><i class="material-icons">delete</i></a>
+     <!-- <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a> -->
+     <!-- Modal to Delete -->
+       <!-- Modal Trigger -->
+
+       <!-- Modal Structure -->
+       <div id="modal1" class="modal">
+         <div class="modal-content" style="text-align:center;">
+           <h4>Are you sure you want to delete this post?</h4>
+           <span class="title" style="color:grey;font-size:medium;"><b>Author {{post.user_username}}</b></span><br>
+           <span class="title"><b>{{post.title}}</b></span>
+           <p>{{post.content}}</p>
+           <div class="modal-footer" style="text-align:center;">
+             <a href="http://localhost/posts/deletePost/{{post.id}}" class="modal-close waves-effect waves-green btn-flat red-text" style="font-weight:bold;">Yes</a>
+             <a href="#!" class="modal-close waves-effect waves-green btn-flat">No</a>
+           </div>
+           <!-- <p>A bunch of text</p> -->
+         </div>
+       </div>
+     <!-- end modal to delete -->
+
+     {% endif %}
    </li>
 {% endfor %}
 </ul>
+</div>
 {% endblock %}
