@@ -49,6 +49,11 @@ class Posts {
 
   public function editPost($post_id) {
     $post = Post::getSinglePost($post_id);
+    if ($post['user_id'] != $_SESSION['user_id']) {
+      header("Refresh:0; url=http://localhost/users/logout");
+    }
+    echo $post['user_id'];
+    echo $_SESSION['user_id'];
     $args = [
       'post_content' => $post['content'],
       'post_title' => $post['title'],

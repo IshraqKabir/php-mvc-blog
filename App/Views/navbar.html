@@ -1,8 +1,13 @@
 <nav>
     <div class="nav-wrapper indigo lighten-2">
       <div class="brand-logo">
-        <a href="#!" >MVC BLOG</a>
-        <i class="material-icons" style="margin-left: 10px;font-size:50px;">cloud</i>
+        {% if session.user_is_authenticated is defined %}
+          <a href="http://localhost/posts/allPosts" >MVC BLOG</a>
+          <a href="http://localhost/posts/allPosts"><i class="material-icons" style="margin-left: 10px;font-size:50px;">cloud</i></a>
+        {% else %}
+        <a href="#" >MVC BLOG</a>
+        <a href="#"><i class="material-icons" style="margin-left: 10px;font-size:50px;">cloud</i></a>
+        {% endif %}
         </div>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
