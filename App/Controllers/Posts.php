@@ -48,6 +48,28 @@ class Posts {
   }
 
   public function editPost($post_id) {
-
+    $post = Post::getSinglePost($post_id);
+    $args = [
+      'post_content' => $post['content'],
+      'post_title' => $post['title'],
+      'post_id' => $post['id'],
+      'title_error' => '',
+      'content_error' => ''
+    ];
+    if(count($_POST) > 0) {
+      if ($_POST['title'] == '' || $_POST['content'] == '') {
+        if ($_POST['title'] == '') {
+          $args['title_error'] = 'title cannot be empty';
+        }
+        if ($_POST['content'] == '') {
+          $args['content_error'] = 'content cannot be empty';
+        }
+      } else {
+        echo 'edit from con';
+        Post::editPost($post_id, $_POST['title'], $_POST['content']);
+        header("LOCATION: http://localhost/posts/allPosts");
+      }
+    }
+    View::renderTemplate('Posts/editPost.html', $args);
   }
 }
