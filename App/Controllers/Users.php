@@ -65,7 +65,7 @@ class Users {
           $args['username_error'] = 'Invalid username. No uppercase letters and has to start with a letter. Underscore is allowed. Must contain atleast three characters';
         }
         if ($_POST['username']!= '' && !User::checkUserName($_POST['username'])) {
-          $args['username_error'] = 'Username already exists';
+            $args['username_error'] = 'Username already exists';
         }
         if ($_POST['email'] != '') {
           if (!User::checkEmail($_POST['email'])) {
@@ -95,7 +95,6 @@ class Users {
         $args['password2_error'] = 'Passwords dont match';
       }
       else {
-        echo 'register user';
         User::registerUser(
           $_POST['first_name'],
           $_POST['last_name'],
@@ -131,7 +130,7 @@ class Users {
         // $args['login_error'] = 'Username or password does not match';
       }
       else if ($_POST['email'] != '' && User::checkEmail($_POST['email'])) {
-        $args['email_error'] = 'Email already exists';
+        $args['email_error'] = 'This email does not have an account';
       }
       else {
         if(!User::loginUser($email, $password)) {

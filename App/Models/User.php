@@ -3,6 +3,21 @@ namespace App\Models;
 use PDO;
 
 class User extends \Core\Model {
+  // get user by id
+  public static function getUserByID($user_id) {
+      try {
+        $db = static::getDB();
+        $query = 'SELECT * FROM users WHERE user_id = ?';
+        $statement = $db->prepare($query);
+        $statement->execute([$user_id]);
+        $user = $statement->fetch(PDO::FETCH_ASSOC);
+        return $user;
+      }
+      catch (PDOException $e) {
+        echo $e->getMessage();
+      }
+  }
+
   // returns true if no match is found
   public static function checkUserName($username) {
     try {
@@ -82,13 +97,13 @@ class User extends \Core\Model {
       $db=null;
       $hash = $user['password'];
       if ($count == 0) {
-        echo 'login failed';
         return false;
       } else {
         if (password_verify($password, $hash)) {
           $_SESSION['email'] = $user['email'];
           $_SESSION['username'] = $user['username'];
           $_SESSION['password'] = $password;
+          $_SESSION['user_id'] = $user['user_id'];
           $_SESSION['user_is_authenticated'] = true;
           return true;
         }
