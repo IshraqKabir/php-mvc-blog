@@ -51,6 +51,7 @@ class Posts {
     $post = Post::getSinglePost($post_id);
     if ($post['user_id'] != $_SESSION['user_id']) {
       header("Refresh:0; url=http://localhost/users/logout");
+      return;
     }
     echo $post['user_id'];
     echo $_SESSION['user_id'];
