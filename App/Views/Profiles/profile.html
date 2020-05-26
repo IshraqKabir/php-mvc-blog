@@ -1,12 +1,27 @@
 {% extends 'base.html' %}
-{% block title %}All Posts {% endblock %}
+{% block title %}User Profile{% endblock %}
 {% block content %}
+
+  <div class="container center flow-text" style="margin-top:20px;">
+      <div>
+        <img
+        class="responsive-img circle"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSpYHz0hbmkgfvd6XKbIUJlpMS5hNSCp5avLRAEa8cNAyBpJ0_V&usqp=CAU" alt="defaul_profile_pic"
+        style="height:200px;width:200px;"
+        >
+      </div>
+
+      {{user.first_name|title}} {{user.last_name|title}} <br>
+      <a href="" style="font-size:20px;">edit bio</a>
+  </div>
+<h4 class="flow-text center">Posts by {{user.first_name|title}} {{user.last_name|title}}</h4>
+<!-- Posts by the user -->
 <div style="margin:auto;width:70%;">
 <ul class="collection">
-{% for post in allPosts %}
+{% for post in posts_by_user %}
    <li class="collection-item avatar">
      <i class="material-icons circle red">play_arrow</i>
-     <span class="title" style="color:grey;font-size:medium;"><b>Author <a href="http://localhost/profiles/userProfile/{{post.user_id}}">{{post.user_username}}</a></b></span><br>
+     <span class="title" style="color:grey;font-size:medium;"><b>Author {{post.user_username}}</b></span><br>
      <span class="title"><b>{{post.title}}</b></span>
      <p>{{post.content}}</p>
      {% if post.user_id == session.user_id %}
@@ -37,4 +52,7 @@
 {% endfor %}
 </ul>
 </div>
+
+<!-- end of posts by the user -->
+
 {% endblock %}

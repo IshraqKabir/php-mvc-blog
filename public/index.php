@@ -2,7 +2,11 @@
 session_start();
 require '..\Core\bootstrap.php';
 
-$url = ltrim($_SERVER['REQUEST_URI'], '/');
+$url = $_SERVER['REQUEST_URI'];
+if (strpos($_SERVER['REQUEST_URI'], 'mvc-blog/public') !== false) {
+    $url = ltrim($url, 'public');
+}
+$url = ltrim($url, '/');
 $router = new \Core\Router();
 use App\Models\User;
 if ($url == 'users/register') {

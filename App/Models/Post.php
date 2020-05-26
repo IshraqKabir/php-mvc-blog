@@ -17,6 +17,20 @@ class Post extends \Core\Model {
     }
   }
 
+  public static function getPostByUserID($user_id) {
+    try {
+      $db = static::getDB();
+      $query = 'SELECT * FROM posts WHERE user_id = :user_id';
+      $statement = $db->prepare($query);
+      $statement->execute(['user_id' => $user_id]);
+      $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
+      return $posts;
+    }
+    catch (PDOException $e) {
+      echo $e->getMessage();
+    }
+  }
+
   public static function getSinglePost($post_id) {
     try {
       $db = static::getDB();
