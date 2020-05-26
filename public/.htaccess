@@ -2,7 +2,6 @@
 RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^((?!(?:public|project)/).+)$ public/index.php?cmd=$1  [QSA,NC]
 RewriteRule ^(.*)\.(gif|jpg|png|jpeg|css|js|swf)$ /public/$1.$2 [NC]
-
+RewriteRule ^((?!(?:public|project)/).+)$ public/index.php?cmd=$1  [QSA,NC]
 RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
