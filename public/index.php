@@ -1,7 +1,6 @@
 <?php
 session_start();
 require '..\Core\bootstrap.php';
-
 $url = $_SERVER['REQUEST_URI'];
 if (strpos($_SERVER['REQUEST_URI'], 'mvc-blog/public') !== false) {
     $url = ltrim($url, 'public');
