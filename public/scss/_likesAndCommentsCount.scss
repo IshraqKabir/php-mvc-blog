@@ -1,0 +1,14 @@
+// span {
+//   color: red;
+// }
+
+.likesAndCommentsCount {
+  background-color: white;
+  border-bottom: 1px solid #e0e0e0;
+  font-weight: bold;
+  color: #32bcf3;
+
+  span {
+    margin: 0 10px;
+  }
+}

@@ -10,11 +10,23 @@
     border-right: 1px solid #e0e0e0;
     color: grey;
 
+    .active {
+      margin-right: 10px;
+      flex-grow: 1;
+      text-align: center;
+      border-right: 1px solid #e0e0e0;
+      color: #32bcf3;
+    }
+
     &:hover {
       color: #32bcf3;
       font-weight: bold;
       transition: 0.2s all linear;
     }
+  }
+
+  .likeIcon {
+    cursor: pointer;
   }
 
   .commentButton {

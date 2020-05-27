@@ -4,8 +4,7 @@
 <div style="margin:auto;width:70%;">
 <ul class="collection">
 {% for post in allPosts %}
-
-    <li class="collection-item avatar">
+  <li class="collection-item avatar">
       <i class="material-icons circle red">play_arrow</i>
       <span class="title" style="color:grey;font-size:medium;"><b>Author <a href="http://localhost/profiles/userProfile/{{post.user_id}}">{{post.user_username}}</a></b></span><br>
       <span class="title"><b>{{post.title}}</b></span>
@@ -36,11 +35,23 @@
 
       {% endif %}
     </li>
-    <!-- lcdiv -->
-    <div class="lcdiv">
-      <div class="likeButton {{post.id}}">
-        <i class="fas fa-heart {{post.id}}"> Like</i>
+    <!-- likes and comments count div -->
+      <div class="likesAndCommentsCount">
+        <span class="likeCount likeCount__{{post.id}}">Likes ({{post.likeCount}})</span>
       </div>
+    <!-- end of likes and comments count div -->
+    <!-- lcdiv -->
+  <div class="lcdiv">
+    {% if post.didCurrentUserLikeThePost == 1 %}
+    <div class="{{post.id}} likeButton active ">
+      <i class="{{post.id}} likeIcon fas fa-heart active "> Like</i>
+      </div>
+    {% else %}
+
+  <div class="{{post.id}} likeButton ">
+      <i class="{{post.id}} likeIcon fas fa-heart "> Like</i>
+    </div>
+    {% endif %}
       <div class="commentButton">
         Comment
       </div>
@@ -51,27 +62,5 @@
 </ul>
 </div>
 
-<script>
-  const like = (postID) => {
-    console.log(postID);
-    fetch(`http://localhost/posts/likePost/${postID}`, {
-      method: "post",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    })
-      .then(() => console.log('liked'));
-  }
 
-  document.querySelectorAll('.likeButton').forEach(button => {
-    button.addEventListener('click', event => {
-      let classList = event.target.classList;
-      classList = Array.prototype.slice.call(classList);
-      postID = classList.pop();
-      like(postID);
-    });
-  });
-
-</script>
 {% endblock %}

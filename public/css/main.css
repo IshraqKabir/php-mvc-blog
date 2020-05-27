@@ -10,14 +10,34 @@
   border-right: 1px solid #e0e0e0;
   color: grey;
 }
+.lcdiv .likeButton .active {
+  margin-right: 10px;
+  flex-grow: 1;
+  text-align: center;
+  border-right: 1px solid #e0e0e0;
+  color: #32bcf3;
+}
 .lcdiv .likeButton:hover {
   color: #32bcf3;
   font-weight: bold;
   transition: 0.2s all linear;
 }
+.lcdiv .likeIcon {
+  cursor: pointer;
+}
 .lcdiv .commentButton {
   flex-grow: 1;
   text-align: center;
+}
+
+.likesAndCommentsCount {
+  background-color: white;
+  border-bottom: 1px solid #e0e0e0;
+  font-weight: bold;
+  color: #32bcf3;
+}
+.likesAndCommentsCount span {
+  margin: 0 10px;
 }
 
 body {

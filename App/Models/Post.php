@@ -106,4 +106,41 @@ class Post extends \Core\Model {
       echo $e->getMessage();
     }
   }
+
+    public static function getUsersWhoLikedThePost($post_id) {
+      return;
+    }
+
+    public static function checkIfCurrentUserLikedThePost($post_id) {
+      try {
+        $db = static::getDB();
+        $query = 'SELECT * FROM likes WHERE post_id = :post_id AND user_id = :user_id';
+        $statement = $db->prepare($query);
+        $statement->execute(['post_id' => $post_id, 'user_id' => $_SESSION['user_id']]);
+        $count = $statement->rowCount();
+        if ($count == 0) {
+          return false;
+        } else if ($count == 1){
+          return true;
+        }
+      }
+      catch (PDOException $e) {
+        echo $e->getMessage();
+      }
+
+    }
+
+    public static function getLikeCount($post_id) {
+      try {
+        $db = static::getDB();
+        $query = 'SELECT * FROM likes WHERE post_id = :post_id';
+        $statement = $db->prepare($query);
+        $statement->execute(['post_id' => $post_id]);
+        $count = $statement->rowCount();
+        return $count;
+      }
+      catch (PDOException $e) {
+        echo $e->getMessage();
+      }
+    }
 }

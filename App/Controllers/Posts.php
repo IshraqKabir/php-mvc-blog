@@ -11,6 +11,23 @@ class Posts {
   public function allPosts() {
     $allPosts = Post::getAllPosts();
     $user = User::getUserByID($_SESSION['user_id']);
+
+
+    for ($i = 0; $i < count($allPosts); $i++) {
+      $didCurrentUserLikeThePost = Post::checkIfCurrentUserLikedThePost($allPosts[$i]['id']);
+      $likeCount = Post::getLikeCount($allPosts[$i]['id']);
+
+      $allPosts[$i]['didCurrentUserLikeThePost'] = $didCurrentUserLikeThePost;
+      if ($didCurrentUserLikeThePost) {
+        $allPosts[$i]['didCurrentUserLikeThePost'] = 1;
+      } else {
+        $allPosts[$i]['didCurrentUserLikeThePost'] = 0;
+      }
+      $allPosts[$i]['likeCount'] = $likeCount;
+    }
+
+
+    // print_r($allPosts);
     $args = array(
       "allPosts" => $allPosts
     );
