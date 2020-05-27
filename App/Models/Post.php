@@ -3,6 +3,8 @@
 namespace App\Models;
 use PDO;
 
+
+
 class Post extends \Core\Model {
   public static function getAllPosts() {
     try {
@@ -11,6 +13,30 @@ class Post extends \Core\Model {
       $statement = $db->query($query);
       $results = $statement->fetchAll(PDO::FETCH_ASSOC);
       return $results;
+    }
+    catch (PDOException $e) {
+      echo $e->getMessage();
+    }
+  }
+
+  public static function likePost($post_id, $user_id) {
+    try {
+      $db = static::getDB();
+      $query = 'SELECT * FROM likes WHERE post_id = :post_id AND user_id = :user_id';
+      $statement = $db->prepare($query);
+      $statement->execute(['post_id' => $post_id, 'user_id' => $user_id]);
+      $count = $statement->rowCount();
+      if ($count == 0) {
+        $query = 'INSERT INTO likes(user_id, post_id) VALUES(:user_id, :post_id)';
+        $statement = $db->prepare($query);
+        $statement->execute(['post_id' => $post_id, 'user_id' => $user_id]);
+        echo 'liked';
+      } else if ($count == 1){
+        $query = 'DELETE FROM likes WHERE post_id = :post_id AND user_id = :user_id';
+        $statement = $db->prepare($query);
+        $statement->execute(['post_id' => $post_id, 'user_id' => $user_id]);
+        echo 'like removed';
+      }
     }
     catch (PDOException $e) {
       echo $e->getMessage();

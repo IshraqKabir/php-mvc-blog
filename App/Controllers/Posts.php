@@ -74,11 +74,21 @@ class Posts {
           $args['content_error'] = 'content cannot be empty';
         }
       } else {
-        echo 'edit from con';
         Post::editPost($post_id, $_POST['title'], $_POST['content']);
         header("LOCATION: http://localhost/posts/allPosts");
       }
     }
     View::renderTemplate('Posts/editPost.html', $args);
+  }
+
+  public function likePost($post_id) {
+    header('Access-Control-Allow-Origin: *');
+    header('Content-Type: application/json');
+    // if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    //   return;
+    // }
+    echo 'reached the controller';
+    $user_id = $_SESSION['user_id'];
+    Post::likePost($post_id, $user_id);
   }
 }

@@ -43,7 +43,7 @@ class User extends \Core\Model {
     try {
       $db = static::getDB();
       $query = 'SELECT * FROM USERS WHERE email = ?';
-      $statement = $db->prepare('SELECT * FROM USERS WHERE email = ?');
+      $statement = $db->prepare($query);
       $statement->execute([$email]);
       $count = $statement->rowCount();
       if ($count == 0) {

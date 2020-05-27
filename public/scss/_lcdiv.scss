@@ -1,0 +1,24 @@
+.lcdiv {
+  display: flex;
+  border-bottom: 5px solid #e0e0e0;
+  background-color: white;
+
+  .likeButton {
+    margin-right: 10px;
+    flex-grow: 1;
+    text-align: center;
+    border-right: 1px solid #e0e0e0;
+    color: grey;
+
+    &:hover {
+      color: #32bcf3;
+      font-weight: bold;
+      transition: 0.2s all linear;
+    }
+  }
+
+  .commentButton {
+    flex-grow: 1;
+    text-align: center;
+  }
+}
