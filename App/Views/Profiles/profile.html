@@ -17,7 +17,7 @@
 <!-- Posts by the user -->
 <div style="margin:auto;width:70%;">
 <ul class="collection">
-{% for post in posts_by_user %}
+{% for post in allPosts %}
    <li class="collection-item avatar">
      <i class="material-icons circle red">play_arrow</i>
      <span class="title" style="color:grey;font-size:medium;"><b>Author {{post.user_username}}</b></span><br>
@@ -48,6 +48,28 @@
 
      {% endif %}
    </li>
+   <!-- likes and comments count div -->
+     <div class="likesAndCommentsCount">
+       <span class="likeCount likeCount__{{post.id}}">Likes ({{post.likeCount}})</span>
+     </div>
+   <!-- end of likes and comments count div -->
+   <!-- lcdiv -->
+ <div class="lcdiv">
+   {% if post.didCurrentUserLikeThePost == 1 %}
+   <div class="{{post.id}} likeButton active ">
+     <i class="{{post.id}} likeIcon fas fa-heart active "> Like</i>
+     </div>
+   {% else %}
+
+ <div class="{{post.id}} likeButton ">
+     <i class="{{post.id}} likeIcon fas fa-heart "> Like</i>
+   </div>
+   {% endif %}
+     <div class="commentButton">
+       Comment
+     </div>
+   </div>
+   <!-- end of lcdiv -->
 {% endfor %}
 </ul>
 </div>

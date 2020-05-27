@@ -8,10 +8,24 @@ use App\Models\User;
 class Profiles {
   public function userProfile($user_id) {
     $user = User::getUserByID($user_id);
-    $posts_by_user = Post::getPostByUserID($user_id);
+    $allPosts = Post::getPostByUserID($user_id);
+
+    for ($i = 0; $i < count($allPosts); $i++) {
+      $didCurrentUserLikeThePost = Post::checkIfCurrentUserLikedThePost($allPosts[$i]['id']);
+      $likeCount = Post::getLikeCount($allPosts[$i]['id']);
+
+      $allPosts[$i]['didCurrentUserLikeThePost'] = $didCurrentUserLikeThePost;
+      if ($didCurrentUserLikeThePost) {
+        $allPosts[$i]['didCurrentUserLikeThePost'] = 1;
+      } else {
+        $allPosts[$i]['didCurrentUserLikeThePost'] = 0;
+      }
+      $allPosts[$i]['likeCount'] = $likeCount;
+    }
+
     $args = [
       'user' => $user,
-      'posts_by_user' => $posts_by_user,
+      'allPosts' => $allPosts,
     ];
     View::renderTemplate('Profiles/profile.html', $args);
   }
