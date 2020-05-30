@@ -1,5 +1,30 @@
 @import 'lcdiv';
 @import 'likesAndCommentsCount';
+@import 'commentSection';
+
 body {
   background-color: #e0e0e0;
+}
+
+.allPosts {
+  margin:auto;
+  width:70%;
+}
+
+@media screen and (max-width: 750px) {
+  .allPosts {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .allPosts {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .allPosts {
+    width: 100%;
+  }
 }

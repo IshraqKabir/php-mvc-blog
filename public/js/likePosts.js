@@ -1,7 +1,7 @@
 const like = (postID) => {
   // console.log(postID);
   fetch(`http://localhost/posts/likePost/${postID}`, {
-    method: "post",
+    method: "POST",
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'

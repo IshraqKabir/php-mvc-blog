@@ -1,6 +1,6 @@
 .lcdiv {
   display: flex;
-  border-bottom: 5px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
   background-color: white;
 }
 .lcdiv .likeButton {
@@ -39,6 +39,67 @@
   margin: 0 10px;
 }
 
+.commentSection {
+  background-color: white;
+  border-bottom: 5px solid #e0e0e0;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+}
+.commentSection .profile-pic {
+  height: 30px;
+  width: 30px;
+  margin: 15px 5px;
+  flex-grow: 0;
+}
+.commentSection .inputField {
+  width: 90%;
+  margin: 0 auto;
+}
+.commentSection .text-area {
+  width: 100%;
+  border: 2px solid #aaa;
+  border-radius: 4px;
+  margin: 8px 0;
+  outline: none;
+  padding: 8px;
+  box-sizing: border-box;
+  transition: 0.3s;
+  resize: none;
+  flex-grow: 3;
+}
+.commentSection .text-area:focus {
+  border-color: dodgerBlue;
+  height: 50px;
+  box-shadow: 0 0 8px 0 dodgerBlue;
+}
+.commentSection .material-icons {
+  color: #32bcf3;
+  margin: 15px 5px;
+  cursor: pointer;
+}
+
 body {
   background-color: #e0e0e0;
+}
+
+.allPosts {
+  margin: auto;
+  width: 70%;
+}
+
+@media screen and (max-width: 750px) {
+  .allPosts {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 550px) {
+  .allPosts {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .allPosts {
+    width: 100%;
+  }
 }

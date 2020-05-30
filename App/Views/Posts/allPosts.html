@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}All Posts {% endblock %}
 {% block content %}
-<div style="margin:auto;width:70%;">
+<div class="allPosts">
 <ul class="collection">
 {% for post in allPosts %}
   <li class="collection-item avatar">
@@ -10,7 +10,7 @@
       <span class="title"><b>{{post.title}}</b></span>
       <p>{{post.content}}</p>
       {% if post.user_id == session.user_id %}
-      <a href="http://localhost/posts/editPost/{{post.id}}" class="secondary-content" style="margin-right:30px;"><i class="material-icons">edit</i></a>
+      <a href="http://localhost/posts/editPost/{{post.id}}" class="secondary-content" style="margin-right: 20px;"><i class="material-icons">edit</i></a>
       <a class="secondary-content modal-trigger red-text" href="#modal1"><i class="material-icons">delete</i></a>
       <!-- <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a> -->
       <!-- Modal to Delete -->
@@ -18,12 +18,12 @@
 
         <!-- Modal Structure -->
         <div id="modal1" class="modal">
-          <div class="modal-content" style="text-align:center;">
+          <div class="modal-content" >
             <h4>Are you sure you want to delete this post?</h4>
             <span class="title" style="color:grey;font-size:medium;"><b>Author {{post.user_username}}</b></span><br>
             <span class="title"><b>{{post.title}}</b></span>
             <p>{{post.content}}</p>
-            <div class="modal-footer" style="text-align:center;">
+            <div class="modal-footer">
               <a href="http://localhost/posts/deletePost/{{post.id}}" class="modal-close waves-effect waves-green btn-flat red-text" style="font-weight:bold;">Yes</a>
               <a href="#" class="modal-close waves-effect waves-green btn-flat">No</a>
             </div>
@@ -57,10 +57,29 @@
       </div>
     </div>
     <!-- end of lcdiv -->
+    <!-- comment section -->
+      <div class="commentSection">
+        <div class="img">
+          <img
+          class="responsive-img circle profile-pic"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSpYHz0hbmkgfvd6XKbIUJlpMS5hNSCp5avLRAEa8cNAyBpJ0_V&usqp=CAU" alt="defaul_profile_pic">
+        </div>
+        <div class="inputField">
+          <!-- <i class="material-icons prefix">mode_edit</i> -->
+          <input type="text" id="icon_prefix2" class="text__{{post.id}} text-area" placeholder="Add a comment..."/>
+        </div>
+          <i class="button__{{post.id}} addCommentIcon small material-icons">send</i>
 
+
+
+
+      </div>
+    <!-- end of comment section -->
 {% endfor %}
 </ul>
 </div>
 
+
+<script src="/js/addComment.js"></script>
 
 {% endblock %}
