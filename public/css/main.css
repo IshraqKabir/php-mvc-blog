@@ -27,6 +27,8 @@
 .lcdiv .commentButton {
   flex-grow: 1;
   text-align: center;
+  color: #808080;
+  font-weight: bold;
 }
 
 .likesAndCommentsCount {
@@ -35,13 +37,16 @@
   font-weight: bold;
   color: #808080;
 }
-.likesAndCommentsCount span {
+.likesAndCommentsCount .likeCount {
   margin: 0 10px;
+}
+.likesAndCommentsCount .commentCount {
+  float: right;
+  margin-right: 10px;
 }
 
 .commentSection {
   background-color: white;
-  border-bottom: 5px solid #e0e0e0;
   width: 100%;
   margin: 0 auto;
   display: flex;
@@ -79,6 +84,39 @@
   cursor: pointer;
 }
 
+.commentsList {
+  background-color: white;
+  border-bottom: 5px solid #e0e0e0;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+.commentsList .singleComment {
+  background-color: white;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+}
+.commentsList .singleComment .profile-pic {
+  height: 30px;
+  width: 30px;
+  margin: 15px 5px;
+}
+.commentsList .singleComment .content {
+  background-color: #e0e0e0;
+  border-radius: 1rem;
+  width: 92%;
+  height: 100%;
+  margin: auto auto;
+}
+.commentsList .singleComment .content .username {
+  margin-left: 10px;
+}
+.commentsList .singleComment .content .commentText {
+  margin: 5px 10px;
+}
+
 body {
   background-color: #e0e0e0;
 }
@@ -86,6 +124,7 @@ body {
 .allPosts {
   margin: auto;
   width: 70%;
+  border-radius: 1rem;
 }
 
 @media screen and (max-width: 750px) {

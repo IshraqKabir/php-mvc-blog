@@ -1,6 +1,5 @@
 .commentSection {
   background-color: white;
-  border-bottom: 5px solid #e0e0e0;
   width: 100%;
   margin: 0 auto;
   display: flex;
@@ -42,4 +41,45 @@
     cursor: pointer;
   }
 
+}
+
+.commentsList {
+  background-color: white;
+  border-bottom: 5px solid #e0e0e0;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  .singleComment {
+    background-color: white;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+
+    .profile-pic {
+      height: 30px;
+      width: 30px;
+      margin: 15px 5px;
+      // flex-grow: 0;
+    }
+
+
+    .content {
+      background-color: #e0e0e0;
+      border-radius: 1rem;
+      width: 92%;
+      height: 100%;
+      margin: auto auto;
+
+      .username {
+        margin-left: 10px;
+      }
+
+      .commentText{
+        margin: 5px 10px;
+      }
+
+    }
+  }
 }

@@ -8,7 +8,12 @@
   font-weight: bold;
   color: #808080;
 
-  span {
+  .likeCount {
     margin: 0 10px;
+  }
+
+  .commentCount {
+    float: right;
+    margin-right: 10px;
   }
 }

@@ -34,10 +34,6 @@ document.querySelectorAll('.likeIcon').forEach(button => {
       likes++;
       event.target.classList.add('active');
     }
-
     document.querySelector(`.likeCount__${postID}`).textContent = 'Likes (' + likes + ')';
-
-
-
   });
 });

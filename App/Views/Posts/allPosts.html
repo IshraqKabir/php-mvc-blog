@@ -38,6 +38,7 @@
     <!-- likes and comments count div -->
       <div class="likesAndCommentsCount">
         <span class="likeCount likeCount__{{post.id}}">Likes ({{post.likeCount}})</span>
+        <span class="commentCount commentCount__{{post.id}}">Comments ({{post.commentCount}})</span>
       </div>
     <!-- end of likes and comments count div -->
     <!-- lcdiv -->
@@ -58,7 +59,7 @@
     </div>
     <!-- end of lcdiv -->
     <!-- comment section -->
-      <div class="commentSection">
+      <div class="commentSection hide__height {{post.id}}__hide__height">
         <div class="img">
           <img
           class="responsive-img circle profile-pic"
@@ -71,9 +72,29 @@
           <i class="button__{{post.id}} addCommentIcon small material-icons">send</i>
 
 
+        </div>
+          <div class="{{post.id}}__commentsList commentsList">
+            {% for comment in post.comments %}
+            <div class="singleComment">
+              <div class="img">
+                <img
+                class="responsive-img circle profile-pic"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSpYHz0hbmkgfvd6XKbIUJlpMS5hNSCp5avLRAEa8cNAyBpJ0_V&usqp=CAU" alt="defaul_profile_pic">
+              </div>
+              <div class="content">
+                <div class="username">
+                  <a href="http://localhost/profiles/userProfile/{{comment.user_id}}">{{comment.username}}</a>
 
+                </div>
+                <div class="commentText">
+                  {{comment.content}}
+                </div>
+              </div>
 
-      </div>
+            </div>
+
+          {% endfor %}
+        </div>
     <!-- end of comment section -->
 {% endfor %}
 </ul>

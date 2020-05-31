@@ -20,7 +20,5 @@ class Comments {
     $content = $data->content;
 
     Comment::addComment($post_id, $content);
-
-
   }
 }

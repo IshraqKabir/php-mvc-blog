@@ -33,5 +33,12 @@ document.querySelectorAll('.addCommentIcon').forEach(icon => {
     if (content !== '') {
         addPost(postID, content);
     }
+
+    let commentsList = document.querySelector(`${postID}__commentsList`);
+    let singleComment = document.createElement('div');
+    singleComment.classList.add('singleComment');
+    singleComment.innerHTML = 'sup, yall';
+    body.append(singleComment);
+
   });
 });
