@@ -46,7 +46,7 @@ class Post extends \Core\Model {
   public static function getPostByUserID($user_id) {
     try {
       $db = static::getDB();
-      $query = 'SELECT * FROM posts WHERE user_id = :user_id';
+      $query = 'SELECT * FROM posts WHERE user_id = :user_id ORDER BY created_at DESC';
       $statement = $db->prepare($query);
       $statement->execute(['user_id' => $user_id]);
       $posts = $statement->fetchAll(PDO::FETCH_ASSOC);

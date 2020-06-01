@@ -53,13 +53,14 @@
       <i class="{{post.id}} likeIcon fas fa-heart "> Like</i>
     </div>
     {% endif %}
-      <div class="commentButton">
+      <div class="{{post.id}} commentButton">
         Comment
       </div>
     </div>
     <!-- end of lcdiv -->
     <!-- comment section -->
-      <div class="commentSection hide__height {{post.id}}__hide__height">
+    <div class="commentSectionWrapper__{{post.id}} commentSectionWrapper">
+      <div class="commentSection">
         <div class="img">
           <img
           class="responsive-img circle profile-pic"
@@ -69,32 +70,34 @@
           <!-- <i class="material-icons prefix">mode_edit</i> -->
           <input type="text" id="icon_prefix2" class="text__{{post.id}} text-area" placeholder="Add a comment..."/>
         </div>
-          <i class="button__{{post.id}} addCommentIcon small material-icons">send</i>
+        <i class="button__{{post.id}} addCommentIcon small material-icons">send</i>
 
 
-        </div>
-          <div class="{{post.id}}__commentsList commentsList">
-            {% for comment in post.comments %}
-            <div class="singleComment">
-              <div class="img">
-                <img
-                class="responsive-img circle profile-pic"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSpYHz0hbmkgfvd6XKbIUJlpMS5hNSCp5avLRAEa8cNAyBpJ0_V&usqp=CAU" alt="defaul_profile_pic">
-              </div>
-              <div class="content">
-                <div class="username">
-                  <a href="http://localhost/profiles/userProfile/{{comment.user_id}}">{{comment.username}}</a>
-
-                </div>
-                <div class="commentText">
-                  {{comment.content}}
-                </div>
-              </div>
+      </div>
+      <div class="commentsList__{{post.id}} commentsList ">
+        {% for comment in post.comments %}
+        <div class="singleComment">
+          <div class="img">
+            <img
+            class="responsive-img circle profile-pic"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSpYHz0hbmkgfvd6XKbIUJlpMS5hNSCp5avLRAEa8cNAyBpJ0_V&usqp=CAU" alt="defaul_profile_pic">
+          </div>
+          <div class="content">
+            <div class="username">
+              <a href="http://localhost/profiles/userProfile/{{comment.user_id}}">{{comment.username}}</a>
 
             </div>
+            <div class="commentText">
+              {{comment.content}}
+            </div>
+          </div>
 
-          {% endfor %}
         </div>
+
+        {% endfor %}
+      </div>
+
+    </div>
     <!-- end of comment section -->
 {% endfor %}
 </ul>

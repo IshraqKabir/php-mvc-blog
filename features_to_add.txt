@@ -1,0 +1,3 @@
+1. pagination of the comments
+2. pagination of the posts
+3. hit enter event listener to post comments
