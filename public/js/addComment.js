@@ -71,12 +71,10 @@ document.querySelectorAll('.addCommentIcon').forEach(icon => {
       // will add single comment to the commment list
       commentsList.prepend(singleComment);
 
-      singleComment.classList.add('yellow');
-      singleComment.classList.add('accent-3');
+      singleComment.classList.add('light-blue');
 
       setTimeout(() => {
-        singleComment.classList.remove('yellow');
-        singleComment.classList.remove('accent-3');
+        singleComment.classList.remove('light-blue');
       }, 1000);
 
   });
